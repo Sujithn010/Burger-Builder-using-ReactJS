@@ -23,9 +23,9 @@ export function* authUserSaga(action){
             password: action.password,
             returnSecureToken: true
         }
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC8boGS2ECkmhJz3TmvOqmQesWugw2Ji8Q';
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}';
         if(!action.isSignup){
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC8boGS2ECkmhJz3TmvOqmQesWugw2Ji8Q'
+            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}'
         }
         try{
         const response = yield axios.post(url,authData);
